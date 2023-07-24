@@ -33,11 +33,9 @@ describe('Page load behavior', () => {
 });
 
 describe('Form completion and submission', () => {  
-  beforeEach(() => {
-    cy.loadPage();
-  });
 
   it('Should type/select inputs and add new trick to page', () => {
+    cy.loadPage() 
     cy.intercept('POST', 'http://localhost:3001/api/v1/tricks', {
       statusCode: 201,
       body: {
