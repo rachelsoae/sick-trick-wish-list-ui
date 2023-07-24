@@ -13,7 +13,6 @@ const Form = ({addTrick}) => {
     setFormData(prevState => {
       return {...prevState, [e.target.name]: e.target.value}
     })
-    setTimeout(console.log(formData), 2000)
   }
 
   const handleSubmit = (e) => {
