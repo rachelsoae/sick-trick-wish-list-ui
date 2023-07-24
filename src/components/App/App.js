@@ -15,10 +15,16 @@ const App = () => {
     .catch(error => alert(error))
   }, [])
 
+  const addTrick = (newTrick) => { 
+    setTricks(prevState => {
+      return [...prevState, newTrick]
+    })
+  }
+
   return (
     <div className="App">
       <h1>Sick Trick Wish List</h1>
-      <Form />
+      <Form addTrick={addTrick} />
       <Tricks tricks={tricks} />
     </div>
   );
