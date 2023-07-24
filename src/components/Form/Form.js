@@ -26,7 +26,12 @@ const Form = ({addTrick}) => {
   }  
   return (
     <form>
-      <select name='stance' onChange={(e) => handleChange(e)} value={formData.stance}>
+      <select 
+        name='stance' 
+        onChange={(e) => handleChange(e)} 
+        value={formData.stance}
+        data-cy='stance'
+      >
        <option value=''>Choose Your Stance</option>
        <option value='regular'>Regular</option>
        <option value='switch'>Switch</option>
@@ -37,8 +42,14 @@ const Form = ({addTrick}) => {
         placeholder='Name of Trick'
         onChange={(e) => handleChange(e)}
         value={formData.name}
+        data-cy='name'
       />
-      <select name='obstacle' onChange={(e) => handleChange(e)} value={formData.obstacle}>
+      <select 
+        name='obstacle' 
+        onChange={(e) => handleChange(e)} 
+        value={formData.obstacle}
+        data-cy='obstacle'
+      >
        <option value=''>Choose Your Obstacle</option>
         <option value='flat-ground'>Flat Ground</option>
         <option value='ledge'>Ledge</option>
@@ -52,12 +63,14 @@ const Form = ({addTrick}) => {
         placeholder='Link to Tutorial'
         onChange={(e) => handleChange(e)}
         value={formData.tutorial}
+        data-cy='tutorial'
       />
       <input
         type='submit'
         name='submit'
         value='Send It!'
         onClick={(e) => handleSubmit(e)}
+        data-cy='submit'
       />
     </form>
   )
