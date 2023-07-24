@@ -38,18 +38,30 @@ describe('Form completion and submission', () => {
   });
 
   it('Should type/select inputs and add new trick to page', () => {
+    cy.intercept('POST', 'http://localhost:3001/api/v1/tricks', {
+      statusCode: 201,
+      body: {
+        stance: 'Switch',
+        name: 'Rachel\'s Rad Trick',
+        obstacle: 'Pool',
+        tutorial: 'pretend this is a link'
+      }
+    }).as('addTrick')
+
     cy.wait('@loadPage').then((intercept) => {
       cy.get('select[data-cy="stance"]').select('Switch');
       cy.get('input[data-cy="name"]').type('Rachel\'s Rad Trick')
       cy.get('select[data-cy="obstacle"]').select('Pool');
       cy.get('input[data-cy="tutorial"]').type('pretend this is a link');
       cy.get('input[data-cy="submit"]').click();
+    })
 
+    cy.wait('@addTrick').then((intercept) => {
       cy.get('article').last().contains('p', 'Switch Rachel\'s Rad Trick');
       cy.get('article').last().contains('p', 'Obstacle: Pool');
       cy.get('article').last().contains('p', 'Link to Tutorial:');
       cy.get('article').last().contains('a', 'pretend this is a link');
-    });
+    })
   });
 });
 
