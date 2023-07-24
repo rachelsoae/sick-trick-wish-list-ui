@@ -16,15 +16,10 @@ const Form = ({addTrick}) => {
     setTimeout(console.log(formData), 2000)
   }
 
-  const createNewTrick = () => {
-    return {...formData, id: Date.now()}
-  }
-
   const handleSubmit = (e) => {
     e.preventDefault();
-    const trick = createNewTrick();
-    addTrick(trick);
-    postNewTrick(trick);
+    postNewTrick(formData)
+    .then(response => addTrick(response));
   }  
 
   return (
