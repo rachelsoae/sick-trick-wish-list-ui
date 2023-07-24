@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { postNewTrick } from '../../apiCalls'
 
 const Form = ({addTrick}) => {
   const [formData, setFormData] = useState({ 
@@ -23,7 +24,9 @@ const Form = ({addTrick}) => {
     e.preventDefault();
     const trick = createNewTrick();
     addTrick(trick);
+    postNewTrick(trick);
   }  
+
   return (
     <form>
       <select 

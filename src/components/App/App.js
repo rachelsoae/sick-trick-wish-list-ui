@@ -2,7 +2,7 @@ import './App.css';
 import { useState, useEffect } from 'react';
 import Form from '../Form/Form';
 import Tricks from '../Tricks/Tricks';
-import getTricks from '../../apiCalls'
+import { getTricks } from '../../apiCalls'
 
 
 const App = () => {
